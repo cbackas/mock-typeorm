@@ -1,0 +1,26 @@
+name: Tag
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*.*.*'
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@your-github-username'
+      - run: npm ci
+      - run: npm run build
+      - run: |
+          cp package.json dist/
+          cp README.md dist/
+      - run: npm publish
+        working-directory: ./dist
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
