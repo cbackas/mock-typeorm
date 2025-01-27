@@ -1,6 +1,6 @@
 {
-  "name": "mock-typeorm",
-  "version": "1.0.2",
+  "name": "@cbackas/mock-typeorm",
+  "version": "1.0.3",
   "description": "Never hit the database again while testing",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -13,7 +13,11 @@
   },
   "homepage": "https://mock-typeorm-docs.vercel.app",
   "repository": {
-    "url": "https://github.com/jazimabbas/mock-typeorm"
+    "type": "git",
+    "url": "https://github.com/cbackas/mock-typeorm.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "build:types": "tsc -p tsconfig.package.json --emitDeclarationOnly",
